@@ -4,7 +4,7 @@ const c = canvas.getContext('2d');
 canvas.width = 500; 
 canvas.height = 700; 
 const explosions = []; 
-let canvasPostition = canvas.getBoundingClientRect(); 
+let canvasPosition = canvas.getBoundingClientRect(); 
 
 class Explosion {
     constructor(x, y){
@@ -34,10 +34,14 @@ class Explosion {
 };
 
 window.addEventListener('click', function(e){
-    let positionX = e.x - canvasPostition.left - 25;
-    let positionY = e.y - canvasPostition.top - 25;
-    explosions.push(new Explosion(positionX, positionY));
+    createAnimation(e); 
 });
+
+function createAnimation(e){
+    let positionX = e.x - canvasPosition.left - 25;
+    let positionY = e.y - canvasPosition.top - 25;
+    explosions.push(new Explosion(positionX, positionY));
+}
 
 function animate(){
     c.clearRect(0, 0, canvas.width, canvas.height)
