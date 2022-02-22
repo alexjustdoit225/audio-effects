@@ -1,8 +1,10 @@
+/** @type {HTMLCanvasElement} */
 const canvas = document.getElementById('canvas1'); 
 const c = canvas.getContext('2d'); 
 canvas.width = 500; 
 canvas.height = 700; 
 const explosins = []; 
+let canvasPostition = canvas.getBoundingClientRect(); 
 
 class Explosion {
     constructor(x, y){
@@ -20,6 +22,13 @@ class Explosion {
         this.frame++; 
     }
     draw(){
-        c.drawImage(this.image, this.spriteWidth * this.frame , 0 , this.spriteWidth, this.spriteHeight , this.x, this.y , this.width, this.height); 
+        c.drawImage(this.image, this.spriteWidth * this.frame , 0 , this.spriteWidth, 
+        this.spriteHeight , this.x, this.y , this.width, this.height); 
     }
+
 };
+
+window.addEventListener('click', function(e){
+    c.fillStyle = 'white'; 
+    c.fillRect(e.x - canvasPostition.left - 25, e.y - canvasPostition.top - 25, 50, 50); 
+});

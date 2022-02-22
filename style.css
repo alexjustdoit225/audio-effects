@@ -5,6 +5,7 @@
 #canvas1 {
     position: absolute;
     border: 3px solid black;
+    background-color: black;
     width: 500px; 
     height: 700px; 
     top: 50%; 
